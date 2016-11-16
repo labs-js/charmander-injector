@@ -1,7 +1,7 @@
 {
   "name": "charmander-injector",
-  "version": "1.0.0",
-  "description": "Dependency injector",
+  "version": "0.0.0",
+  "description": "Dependency injector made in vanilla js",
   "main": "index.js",
   "scripts": {
     "test": "test"
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "injector",
-    "dependency"
+    "dependency",
+    "vanilla js",
   ],
   "author": "Alan Campora <alan.campora@sovanta.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
   "license": "ISC",
