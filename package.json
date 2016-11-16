@@ -4,8 +4,10 @@
   "description": "Dependency injector made in vanilla js",
   "main": "bin/index.js",
   "scripts": {
+    "build": "./node_modules/babel-cli/bin/babel.js lib -d bin",
     "prepublish": "npm run build",
-    "test": "jasmine-node test"
+    "test": "jasmine-node test",
+    "watch": "onchange lib/* -- npm run build"
   },
   "repository": {
     "type": "git",
