@@ -1,0 +1,23 @@
+{
+  "name": "charmander-injector",
+  "version": "1.0.0",
+  "description": "Dependency injector",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labs-js/charmander-injector.git"
+  },
+  "keywords": [
+    "injector",
+    "dependency"
+  ],
+  "author": "Alan Campora <alan.campora@sovanta.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labs-js/charmander-injector/issues"
+  },
+  "homepage": "https://github.com/labs-js/charmander-injector#readme"
+}
