@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/babel-cli/bin/babel.js lib -d bin",
     "prepublish": "npm run build",
-    "test": "jasmine-node test",
+    "test": "babel-node node_modules/.bin/jasmine-node test",
     "watch": "onchange lib/* -- npm run build"
   },
   "repository": {

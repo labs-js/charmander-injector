@@ -1,6 +1,8 @@
-describe('charmander-injector',function(){
+import charmander from '../lib/charmander-injector';
 
-    it('should return true',function(){
+describe('charmander-injector',() =>{
+
+    it('should return true',()=>{
     
         expect(true).toBe(true); 
     });
