@@ -4,6 +4,7 @@
   "description": "Dependency injector made in vanilla js",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/babel-cli/bin/babel.js lib -d bin",
     "test": "jasmine-node test"
   },
   "repository": {
