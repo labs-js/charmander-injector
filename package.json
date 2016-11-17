@@ -5,7 +5,9 @@
   "main": "bin/index.js",
   "scripts": {
     "build": "./node_modules/babel-cli/bin/babel.js lib -d bin",
-    "test": "babel-node node_modules/.bin/jasmine-node test"
+    "prepublish": "npm run build",
+    "test": "babel-node node_modules/.bin/jasmine-node test",
+    "watch": "onchange lib/* -- npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "^1.14.5",
+    "onchange": "^3.0.2"
   }
 }
