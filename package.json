@@ -19,7 +19,9 @@
   },
   "keywords": [
     "injector",
+    "inject",
     "dependency",
+    "dependencies",
     "vanilla js"
   ],
   "author": "Alan Campora <alan.campora@sovanta.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
