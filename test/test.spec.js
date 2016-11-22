@@ -1,4 +1,4 @@
-import CharmanderInjector from '../lib/charmander-injector';
+import CharmanderInjector from '../lib/index.js';
 
 describe('charmander-injector', () => {
 
