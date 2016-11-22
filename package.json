@@ -1,10 +1,14 @@
 {
   "name": "charmander-injector",
-  "version": "1.0.0",
-  "description": "Dependency injector",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Dependency injector made in vanilla js",
+  "main": "bin/index.js",
   "scripts": {
-    "test": "test"
+    "build": "./node_modules/babel-cli/bin/babel.js lib -d bin",
+    "prepublish": "npm run build",
+    "test": "babel-node node_modules/.bin/jasmine-node test",
+    "test:watch": "onchange test/* -- npm run test",
+    "watch": "onchange lib/* -- npm run build"
   },
   "repository": {
     "type": "git",
@@ -12,12 +16,20 @@
   },
   "keywords": [
     "injector",
-    "dependency"
+    "dependency",
+    "vanilla js"
   ],
   "author": "Alan Campora <alan.campora@sovanta.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/labs-js/charmander-injector/issues"
   },
-  "homepage": "https://github.com/labs-js/charmander-injector#readme"
+  "homepage": "https://github.com/labs-js/charmander-injector#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "jasmine-node": "^1.14.5",
+    "onchange": "^3.0.2"
+  }
 }
