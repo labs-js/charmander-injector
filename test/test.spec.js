@@ -30,23 +30,24 @@ describe('charmander-injector', () => {
             expect(charmander.inject).toBeDefined();
         });
 
-        it('should inject dependency into object', () => {
+        it('should inject dependency', () => {
 
             var dummyDependencies = {
                 'dependency': {
-                    value: 'this is a dummy obj'
+                    test:'this is a test value'
                 }
             }
 
             spyOn(charmander, 'getDependency').andReturn(dummyDependencies.dependency);
 
             var result = charmander.inject(
-                ['dependency'], function(dependency){
-                    return dependency; 
-                },this);
+                ['dependency'],
+                function(dependency) {
+                    return dependency;
+                }, this);
 
-            var  expectedResult = result();
-            expect(expectedResult).toBe(dummyDependencies.dependency.value);
+            var expectedResult = result();
+            expect(expectedResult).toBe(dummyDependencies.dependency);
         });
     });
 
