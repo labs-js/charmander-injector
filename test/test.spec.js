@@ -46,16 +46,13 @@ describe('charmander-injector', () => {
 
             spyOn(charmander, 'getDependency').andReturn(dummyDependencies.dependency);
 
-            console.log('getDependency', charmander.getDependency('saraza'));
-
             var result = charmander.inject(
-                ['dependency'], (dependency) => {
-                
-                    console.log(dependency); 
+                ['dependency'], function(dependency){
+                    return dependency; 
                 },this);
 
-            console.log(result.arguments);
-
+            var  expectedResult = result();
+            expect(expectedResult).toBe(dummyDependencies.dependency.value);
         });
     });
 
