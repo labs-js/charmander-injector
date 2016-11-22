@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "7"
+notifications:
+  email:
+    recipients:
+      - samuelfabrizio@gmail.com
+      - alan.campora@gmail.com
+    on_success: [change]
+    on_failure: [always]
