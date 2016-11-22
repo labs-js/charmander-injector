@@ -1,12 +1,6 @@
-import CharmanderInjector from '../lib/index.js';
+import charmander from '../lib/index.js';
 
 describe('charmander-injector', () => {
-
-    var charmander;
-
-    beforeEach(() => {
-        charmander = new CharmanderInjector();
-    });
 
     describe('register', () => {
         it('should be defined', () => {
