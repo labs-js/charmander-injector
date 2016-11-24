@@ -25,7 +25,7 @@
     "dependencies",
     "vanilla js"
   ],
-  "author": "Alan Campora <alan.campora@sovanta.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
+  "author": "Alan Campora <alan.campora@gmail.com>, Samuel Fabrizio <samuelfabrizio@gmail.com >",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/labs-js/charmander-injector/issues"
