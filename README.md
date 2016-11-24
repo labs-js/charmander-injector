@@ -28,3 +28,71 @@
     <img alt="Code Climate" src="https://codeclimate.com/github/labs-js/charmander-injector/badges/gpa.svg">
   </a>
 </p>
+
+## How to use it ?
+    charmander.register('depenendecy', require('dependency');
+    module.exports = charmander.inject(['dependency'], function(dependency){
+        return dependency.helloWorld();
+    }, this)();
+
+## Use case
+You're building an app to get all pokemons around the world starting with an specific char. To do that, you have the following module
+
+
+    var pokemon = require('pokemon'); 
+    module.exports = {
+        getPokemonStartingWith: function(char) {
+            var pokemons = pokemon.all(),
+                filteredPokemons = pokemons.filter(function(p) {
+                    return p[0].toUpperCase() === char.toUpperCase();
+                });
+            return filteredPokemons;
+        }
+    }
+
+In last example, we required the 'pokemon' module to get every pokemon around the world. The function of our module, works as expected, but we know you're a great developer and you want to start testing. 
+
+When you started to write the test, you've realized that var pokemon = require('pokemon')' should have been injected somehow, otherwise it won't be possible to test with a mock pokemon module. 
+
+Therefore, you need an injector, and that's when charmander-injector does its magic. Let's refactor our module using 🔥 charmander 🔥. 
+
+    var charmander = require('charmander-injector');
+    charmander.register('pokemon', require('pokemon'));
+
+    module.exports = charmander.inject(
+        ['pokemon'], 
+        getPokemon
+    )();
+    
+    function getPokemon(pokemon) {
+        'use strict'
+        return function getPokemonStartingWith(char) {
+            var pokemons = pokemon.all(),
+                filteredPokemons = pokemons.filter(function(p) {
+                    return p[0].toUpperCase() === char.toUpperCase();
+                });
+            return filteredPokemons;
+        }
+    }
+
+And this is your test!
+
+    var charmander = require('charmander-injector');
+    charmander.registerMock('pokemon', {
+            all: function() {
+                return ['dummy pokemon 1', 'aPokemon', 'aaPokemon'];
+            }
+        });
+    //The order is important (for now)
+    var getPokemonStartingWith = require('../example');
+
+    describe('example', function() {
+        'use strict';
+        
+        it('getPokemonsStartingWith x char', function() {
+    
+            var result = getPokemonStartingWith('a');
+    
+            expect(result).toEqual(['aPokemon', 'aaPokemon']);
+        });
+    });
