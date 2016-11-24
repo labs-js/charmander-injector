@@ -23,6 +23,26 @@ describe('charmander-injector', function() {
             expect(charmander.dependencies['inquirer']).toBeDefined();
             expect(charmander.dependencies['exec']).toBeDefined();
         });
+
+        it('shouldnt register dependency if mock dependency is present', function() {
+
+            var originalDummyDependency = {
+                test: 'this is a original test value'
+            };
+
+            var dummyDependencies = {
+                dependency: {
+                    mock: {
+                        test: 'this is a test value'
+                    }
+                }
+            }
+
+            spyOn(charmander, 'getDependencies').andReturn(dummyDependencies);
+
+            charmander.register('dependency', originalDummyDependency);
+
+        });
     });
 
     describe('inject', function() {
@@ -53,6 +73,7 @@ describe('charmander-injector', function() {
             //clean spy
             this.removeAllSpies();
         });
+
         it('should inject mock  dependency', function() {
 
             var dummyDependencies = {
@@ -77,6 +98,7 @@ describe('charmander-injector', function() {
             //clean spy
             this.removeAllSpies();
         });
+
 
     });
 
