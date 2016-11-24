@@ -53,6 +53,31 @@ describe('charmander-injector', function() {
             //clean spy
             this.removeAllSpies();
         });
+        it('should inject mock  dependency', function() {
+
+            var dummyDependencies = {
+                'dependency': {
+                    mock: {
+                        test: 'this is a test value'
+                    }
+                }
+            }
+
+            spyOn(charmander, 'getDependency').andReturn(dummyDependencies.dependency);
+
+            var result = charmander.inject(
+                ['dependency'],
+                function(dependency) {
+                    return dependency;
+                }, this);
+
+            var expectedResult = result();
+            expect(expectedResult).toBe(dummyDependencies.dependency.mock);
+
+            //clean spy
+            this.removeAllSpies();
+        });
+
     });
 
 
