@@ -1,6 +1,6 @@
 {
   "name": "charmander-injector",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Dependency injector made in vanilla js",
   "main": "bin/index.js",
   "scripts": {
