@@ -1,7 +1,7 @@
 import charmander from '../lib/index.js';
 
 describe('charmander-injector', function() {
-
+    'use strict';
     describe('register', function() {
 
         it('should be defined', function() {
@@ -10,7 +10,7 @@ describe('charmander-injector', function() {
 
 
         it('should register dependency', function() {
-            var dummyInquirer = {
+            let dummyInquirer = {
                     name: "dummy inquirer"
                 },
                 dummyExec = {
@@ -26,17 +26,17 @@ describe('charmander-injector', function() {
 
         it('shouldnt register dependency if mock dependency is present', function() {
 
-            var originalDummyDependency = {
+            let originalDummyDependency = {
                 test: 'this is a original test value'
             };
 
-            var dummyDependencies = {
+            let dummyDependencies = {
                 dependency: {
                     mock: {
                         test: 'this is a test value'
                     }
                 }
-            }
+            };
 
             spyOn(charmander, 'getDependencies').andReturn(dummyDependencies);
 
@@ -53,21 +53,21 @@ describe('charmander-injector', function() {
 
         it('should inject dependency', function() {
 
-            var dummyDependencies = {
+            let dummyDependencies = {
                 'dependency': {
                     test: 'this is a test value'
                 }
-            }
+            };
 
             spyOn(charmander, 'getDependency').andReturn(dummyDependencies.dependency);
 
-            var result = charmander.inject(
+            let result = charmander.inject(
                 ['dependency'],
                 function(dependency) {
                     return dependency;
                 }, this);
 
-            var expectedResult = result();
+            let expectedResult = result();
             expect(expectedResult).toBe(dummyDependencies.dependency);
 
             //clean spy
@@ -76,23 +76,23 @@ describe('charmander-injector', function() {
 
         it('should inject mock  dependency', function() {
 
-            var dummyDependencies = {
+            let dummyDependencies = {
                 'dependency': {
                     mock: {
                         test: 'this is a test value'
                     }
                 }
-            }
+            };
 
             spyOn(charmander, 'getDependency').andReturn(dummyDependencies.dependency);
 
-            var result = charmander.inject(
+            let result = charmander.inject(
                 ['dependency'],
                 function(dependency) {
                     return dependency;
                 }, this);
 
-            var expectedResult = result();
+            let expectedResult = result();
             expect(expectedResult).toBe(dummyDependencies.dependency.mock);
 
             //clean spy
@@ -112,9 +112,9 @@ describe('charmander-injector', function() {
 
         it('should register mock dependency', function() {
 
-            var dummyDependency = {
+            let dummyDependency = {
                 test: 'should be a mock dependency'
-            }
+            };
 
             charmander.registerMock('dependency', dummyDependency);
 
@@ -127,18 +127,18 @@ describe('charmander-injector', function() {
 
         it('mock dependency', function() {
 
-            var mockDependencies = {
+            let mockDependencies = {
 
                 dependency: {
                     mock: {
                         test: 'this is a test value'
                     }
                 }
-            }
+            };
 
             spyOn(charmander, 'getDependencies').andReturn(mockDependencies);
 
-            var result = charmander.getDependency('dependency');
+            let result = charmander.getDependency('dependency');
 
             expect(result).toBe(mockDependencies.dependency.mock);
 
@@ -148,22 +148,20 @@ describe('charmander-injector', function() {
 
         it('get normal dependency', function() {
 
-            var mockDependencies = {
+            let mockDependencies = {
                 dependency: {
                     test: 'this is a test value'
                 }
-            }
+            };
 
             spyOn(charmander, 'getDependencies').andReturn(mockDependencies);
 
-            var result = charmander.getDependency('dependency');
+            let result = charmander.getDependency('dependency');
 
             expect(result).toBe(mockDependencies.dependency);
 
             //clean
             this.removeAllSpies();
-
-
 
         });
 
